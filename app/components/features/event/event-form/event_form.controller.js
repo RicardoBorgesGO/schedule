@@ -30,9 +30,10 @@ function EventFormController($mdDialog, EventService) {
     };
 
     ctrl.save = function () {
-        ctrl.event.dataInicial = moment(ctrl.event.dataInicial).format('MM/DD/YYYY');
-        console.log(angular.copy(ctrl.event));
-        // EventService.add(angular.copy(ctrl.event));
+        ctrl.event.dataInicial = ctrl.dataInicial.getTime();
+        ctrl.event.dataFinal = ctrl.dataFinal.getTime();
+
+        EventService.add(angular.copy(ctrl.event));
     };
 
     ctrl.showAddUsuarioDialog = function(usuario) {
