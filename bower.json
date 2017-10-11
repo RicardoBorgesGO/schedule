@@ -1,0 +1,37 @@
+{
+  "name": "ckan-publish-ufg",
+  "description": "Projeto para publicação de dados na plataforma CKAN",
+  "main": "index.js",
+  "authors": [
+    "RicardoBorgesGO"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ckan",
+    "publish"
+  ],
+  "homepage": "https://github.com/RicardoBorgesGO/ckan-publish-ufg",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.6",
+    "angular-ui-router": "1.0.0-rc.1",
+    "angular-material": "1.1.3",
+    "angular-material-data-table": "^0.10.10",
+    "ng-lodash": "^0.5.0",
+    "pdfmake": "^0.1.27",
+    "moment": "^2.18.1",
+    "angularfire": "^2.3.0"
+  },
+  "resolutions": {
+    "angular": "1.6.3"
+  },
+  "ignoredDependencies": [
+    "fsevents"
+  ]
+}

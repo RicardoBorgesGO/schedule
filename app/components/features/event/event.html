@@ -1,0 +1,10 @@
+<div class="content" layout="column">
+    <md-card class="card-padding md-whiteframe-4dp">
+
+        <form name="apendicesForm" auto-save-form="$ctrl.save()" auto-save-form-debounce="500" auto-save-form-mode="true">
+            <label><h5>Apêndices</h5></label>
+
+            <ng-quill-editor ng-model="$ctrl.courseData.apendices" ng-change="$ctrl.onChange()"></ng-quill-editor>
+        </form>
+    </md-card>
+</div>

@@ -1,0 +1,6 @@
+[
+  {"name": "Matutino", "code": "MATUTINO"},
+  {"name": "Vespertino", "code": "VESPERTINO"},
+  {"name": "Noturno", "code": "NOTURNO"},
+  {"name": "Integral", "code": "INTEGRAL"}
+]

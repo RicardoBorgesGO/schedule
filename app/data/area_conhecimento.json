@@ -1,0 +1,11 @@
+[
+  {"name": "Ciências Exatas e da Terra", "code": "CIENCIAS_TERRA"},
+  {"name": "Ciências Biológicas", "code": "CIENCIAS_BIOLOGICAS"},
+  {"name": "Engenharias", "code": "ENGENHARIAS"},
+  {"name": "Ciências da Saúde", "code": "CIENCIAS_SAUDE"},
+  {"name": "Ciências Agrárias", "code": "CIENCIAS_AGRARIAS"},
+  {"name": "Ciências Sociais Aplicadas", "code": "CIENCIAS_SOCIAIS"},
+  {"name": "Ciências Humanas", "code": "CIENCIAS_HUMANAS"},
+  {"name": "Linguística, Letras e Artes", "code": "LINGUISTICA"},
+  {"name": "Multidisciplinar", "code": "MULTIDISCIPLINAR"}
+]

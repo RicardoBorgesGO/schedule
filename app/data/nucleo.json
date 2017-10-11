@@ -1,0 +1,5 @@
+[
+  {"name": "Núcleo Comum", "code": "NC"},
+  {"name": "Núcleo Específico", "code": "NE"},
+  {"name": "Núcleo Livre", "code": "NL"}
+]

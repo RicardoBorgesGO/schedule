@@ -1,0 +1,18 @@
+<md-toolbar class="md-whiteframe-1dp">
+    <div class="md-toolbar-tools">
+        <div class="md-title">
+            <md-icon>date_range</md-icon>
+            Schedule
+        </div>
+    </div>
+</md-toolbar>
+
+<md-button class="md-fab md-fab-bottom-right md-primary" style="position: fixed;" ng-click="$ctrl.generatePPC($ctrl.courseData)">
+    <md-icon aria-label="Novo PPC">open_in_new</md-icon>
+</md-button>
+
+<!-- MAIN CONTENT -->
+<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+<div flex layout="row" style="position: relative; height: 100%;">
+    <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="$ctrl.toggleSidebar ? '' : 'content-site'"></md-content>
+</div>

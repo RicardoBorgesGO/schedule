@@ -1,0 +1,118 @@
+.btn-red {
+
+}
+
+.sublist div {
+    padding-left: 40px;
+}
+
+.menu_active {
+    background-color: rgba(0,0,0,0.05);
+}
+
+sidebar {
+    position: absolute;
+    width: 250px;
+    min-height: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    overflow: scroll !important;
+    /*margin-top: 64px;*/
+    /*position: fixed !important;*/
+}
+
+sidebar::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+sidebar::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+sidebar::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+    border: 2px solid #555555;
+}
+
+md-sidenav {
+    width: 250px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    /*margin-top: 64px;*/
+    /*position: fixed !important;*/
+}
+
+.content-site {
+    padding-left: 250px;
+}
+
+.content-list {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.ppc_activity {
+    color: #9E9E9E;
+}
+
+.ppc_title {
+    font-size: 16px;
+}
+
+.course-item {
+    border: 1px solid #DFDFDF;
+    background: #ffffff;
+    margin-bottom: 10px;
+}
+
+/*Autocomplete custom theme*/
+.autocomplete-custom-template li {
+  border-bottom: 1px solid #ccc;
+  height: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  white-space: normal;
+}
+
+.autocomplete-custom-template li:last-child {
+  border-bottom-width: 0;
+}
+
+.autocomplete-custom-template .item-title,
+.autocomplete-custom-template .item-metadata {
+  display: block;
+  line-height: 2;
+}
+
+.autocomplete-custom-template .item-title md-icon {
+  height: 18px;
+  width: 18px;
+}
+
+.custom-sidebar md-list-item > md-icon:first-child:not(.md-avatar-icon),
+.custom-sidebar md-list-item .md-list-item-inner > md-icon:first-child:not(.md-avatar-icon){
+    margin-right: 15px;
+}
+
+.custom-sidebar md-list-item > div.md-primary > md-icon:not(.md-avatar-icon),
+.custom-sidebar md-list-item > div.md-secondary > md-icon:not(.md-avatar-icon),
+.custom-sidebar md-list-item > md-icon:first-child:not(.md-avatar-icon),
+.custom-sidebar md-list-item > md-icon.md-secondary:not(.md-avatar-icon),
+.custom-sidebar md-list-item .md-list-item-inner > div.md-primary > md-icon:not(.md-avatar-icon),
+.custom-sidebar md-list-item .md-list-item-inner > div.md-secondary > md-icon:not(.md-avatar-icon),
+.custom-sidebar md-list-item .md-list-item-inner > md-icon:first-child:not(.md-avatar-icon),
+.custom-sidebar md-list-item .md-list-item-inner > md-icon.md-secondary:not(.md-avatar-icon) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.custom-sidebar md-list {
+    padding: 0px;
+}
+
+.custom-sidebar, .custom-sidebar md-icon {
+    color: #000000;
+}
