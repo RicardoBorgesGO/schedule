@@ -9,7 +9,10 @@ angular
 function EventListComponent() {
     return {
         templateUrl: 'app/components/features/event/event-list/event_list.html',
-        controller: 'EventListController'
+        controller: 'EventListController',
+        bindings: {
+            events: '<'
+        }
     };
 }
 
@@ -19,6 +22,11 @@ function EventListConfig($stateProvider) {
             name: 'event.list',
             url: '/list',
             component: 'eventList',
+            resolve: {
+                events: function(EventService) {
+                    return EventService.fetchAll();
+                }
+            },
             ncyBreadcrumb: {
                 parent: 'features',
                 label: 'Eventos'

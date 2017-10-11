@@ -1,5 +1,5 @@
-<md-button class="md-fab md-fab-bottom-right md-red" ui-sref="manager.new" ng-if="$ctrl.getUserData().role != 'ADMINISTRADOR DO SISTEMA'">
-    <md-tooltip md-direction="left">Cadastrar nova consulta</md-tooltip>
+<md-button class="md-fab md-fab-bottom-right md-red" ui-sref="event.new">
+    <md-tooltip md-direction="left">Cadastrar novo evento</md-tooltip>
     <md-icon aria-label="Novo usuario">add</md-icon>
 </md-button>
 
@@ -28,38 +28,28 @@
                 <thead md-head>
                 <tr md-row>
                     <th md-column>Nome</th>
-                    <th md-column>Query</th>
-                    <th md-column>Usuários</th>
-                    <th md-column>Data cadastro</th>
-                    <th md-column>Data modificação</th>
-                    <th md-column width="10%"></th>
+                    <th md-column>Data Inicial</th>
+                    <th md-column>Data Final</th>
+                    <th md-column>Ações</th>
                 </tr>
                 </thead>
                 <tbody md-body>
-                <tr md-row ng-repeat="query in $ctrl.querys | limitTo: $ctrl.options.limit : 0">
+                <tr md-row ng-repeat="event in $ctrl.events">
                     <td md-cell>
-                        {{query.Query.nome}}
+                        {{event.nome}}
                     </td>
                     <td md-cell>
-                        {{query.Query.query}}
+                        {{event.dataInicial | date:'dd/MM/yyyy'}}
                     </td>
                     <td md-cell>
-                        <span ng-repeat="usuario in query.Query.Usuario">
-                            <span>{{usuario.usuario}}{{$last ? '' : ', '}}</span>
-                        </span>
+                        {{event.dataFinal | date:'dd/MM/yyyy'}}
                     </td>
                     <td md-cell>
-                        {{query.Query.data_criacao}}
-                    </td>
-                    <td md-cell>
-                        {{query.Query.data_modificacao}}
-                    </td>
-                    <td md-cell>
-                        <md-button class="md-icon-button" aria-label="Editar usuário" ng-click="$ctrl.go(query.Query.id)">
+                        <md-button class="md-icon-button" aria-label="Editar evento" ng-click="$ctrl.go(query.Query.id)">
                             <md-icon>mode_edit</md-icon>
                         </md-button>
 
-                        <md-button class="md-icon-button" aria-label="Remover usuário" ng-click="$ctrl.remove(query.Query.id)" ng-if="$ctrl.getUserData().role != 'ADMINISTRADOR DO SISTEMA'">
+                        <md-button class="md-icon-button" aria-label="Remover evento" ng-click="$ctrl.remove(query.Query.id)">
                             <md-icon>delete</md-icon>
                         </md-button>
                     </td>
