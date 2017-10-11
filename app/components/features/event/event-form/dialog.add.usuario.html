@@ -1,0 +1,27 @@
+<md-dialog flex="35" aria-label="Cadatro de conjunto de dados">
+    <form name="usuarioForm"
+          ng-submit="usuarioForm.$valid && add()">
+
+        <md-dialog-content>
+            <div class="md-dialog-content" layout-padding>
+                <div layout-gt-sm="row">
+                    <md-input-container flex-gt-sm>
+                        <label>Usuario</label>
+                        <input name="usuario" type="text" ng-model="usuario.email" placeholder="E-mail do usuário" required>
+
+                        <div ng-messages="usuarioForm.usuario.$error" class="errors">
+                            <div ng-message="required">Campo Obrigatório.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button type="submit" class="md-raised md-primary" ng-disabled="usuarioForm.$invalid">
+                <md-icon ng-bind="'add'" aria-label="Adicionar amostra"></md-icon>
+                Adicionar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>>
