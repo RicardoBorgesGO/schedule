@@ -1,0 +1,46 @@
+<div class="breadcrumbs" ncy-breadcrumb></div>
+
+<div layout="column" ng-cloak class="md-inline-form">
+    <md-card>
+        <md-toolbar class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <span>Evento</span>
+                <div flex></div>
+
+                <md-icon ng-click="$ctrl.goGraphql()" style="cursor: pointer;">
+                    <md-tooltip md-direction="left">Acessar explorador de dados</md-tooltip>
+                    open_in_new
+                </md-icon>
+            </div>
+        </md-toolbar>
+
+        <div layout-padding>
+            <form name="queryUserForm" ng-submit="queryUserForm.$valid && $ctrl.save()">
+                <md-input-container class="md-block">
+                    <label>Nome</label>
+                    <input ng-model="$ctrl.query.nome" placeholder="Nome do evento" maxlength="120">
+                </md-input-container>
+
+                <md-date-range-picker
+                        md-on-select="onSelect()"
+                        date-start="$ctrl.event.dataInicial"
+                        date-end="$ctrl.event.dataFinal"
+                        selected-template-name="selectedRange.selectedTemplateName"
+                        selected-template="selectedRange.selectedTemplate"
+                        show-template="false"
+                        first-day-of-week="0"
+                        disable-templates="TW"
+                        one-panel="true"
+                        ng-model="$ctrl.intervaloData"
+                        custom-templates="mdCustomTemplates"
+                ></md-date-range-picker>
+
+
+                <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid">
+                    <md-icon ng-bind="'save'"></md-icon> Salvar
+                </md-button>
+
+            </form>
+        </div>
+    </md-card>
+</div>

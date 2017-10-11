@@ -55,7 +55,8 @@ gulp.task('vendor', function() {
         'bower_components/angular-sanitize/angular-sanitize.min.js',
         'bower_components/ng-csv/build/ng-csv.min.js',
         'bower_components/firebase/firebase.js',
-        'bower_components/angularfire/dist/angularfire.min.js'
+        'bower_components/angularfire/dist/angularfire.min.js',
+        'bower_components/md-date-range-picker/dist/md-date-range-picker.js'
     ])
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('./public/js/'));

@@ -1,0 +1,76 @@
+<md-button class="md-fab md-fab-bottom-right md-red" ui-sref="manager.new" ng-if="$ctrl.getUserData().role != 'ADMINISTRADOR DO SISTEMA'">
+    <md-tooltip md-direction="left">Cadastrar nova consulta</md-tooltip>
+    <md-icon aria-label="Novo usuario">add</md-icon>
+</md-button>
+
+<md-button ng-if="$ctrl.selected.length > 0" class="md-fab md-fab-top-right" ng-click="$ctrl.removeBatch()" ng-if="$ctrl.getUserData().role != 'ADMINISTRADOR DO SISTEMA'">
+    <md-icon aria-label="Novo usuario">delete_forever</md-icon>
+</md-button>
+
+<div class="breadcrumbs" ncy-breadcrumb></div>
+
+<div class="content" layout="column">
+    <md-card class="card-padding md-whiteframe-4dp">
+        <md-toolbar class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <span>Eventos <span style="font-size: 12px;"> - Consultas cadastradas pelos analistas</span></span>
+                <div flex></div>
+
+                <md-icon ng-click="$ctrl.goGraphql()" style="cursor: pointer;">
+                    <md-tooltip md-direction="left">Acessar explorador de dados</md-tooltip>
+                    open_in_new
+                </md-icon>
+            </div>
+        </md-toolbar>
+
+        <md-table-container>
+            <table md-table ng-model="selected" md-progress="properties">
+                <thead md-head>
+                <tr md-row>
+                    <th md-column>Nome</th>
+                    <th md-column>Query</th>
+                    <th md-column>Usuários</th>
+                    <th md-column>Data cadastro</th>
+                    <th md-column>Data modificação</th>
+                    <th md-column width="10%"></th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row ng-repeat="query in $ctrl.querys | limitTo: $ctrl.options.limit : 0">
+                    <td md-cell>
+                        {{query.Query.nome}}
+                    </td>
+                    <td md-cell>
+                        {{query.Query.query}}
+                    </td>
+                    <td md-cell>
+                        <span ng-repeat="usuario in query.Query.Usuario">
+                            <span>{{usuario.usuario}}{{$last ? '' : ', '}}</span>
+                        </span>
+                    </td>
+                    <td md-cell>
+                        {{query.Query.data_criacao}}
+                    </td>
+                    <td md-cell>
+                        {{query.Query.data_modificacao}}
+                    </td>
+                    <td md-cell>
+                        <md-button class="md-icon-button" aria-label="Editar usuário" ng-click="$ctrl.go(query.Query.id)">
+                            <md-icon>mode_edit</md-icon>
+                        </md-button>
+
+                        <md-button class="md-icon-button" aria-label="Remover usuário" ng-click="$ctrl.remove(query.Query.id)" ng-if="$ctrl.getUserData().role != 'ADMINISTRADOR DO SISTEMA'">
+                            <md-icon>delete</md-icon>
+                        </md-button>
+                    </td>
+                </tr>
+                <tr md-row ng-if="$ctrl.querys.length < 1">
+                    <td md-cell colspan="6">Não existem registros cadastrados.</td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <md-table-pagination md-label="{ page: 'Página', rowsPerPage: 'Linhas por página', of: 'de' }" md-limit="$ctrl.options.limit" md-limit-options="$ctrl.limitOptions" md-page="$ctrl.options.page" md-total="{{$ctrl.countQuerys}}" md-page-select="$ctrl.options.pageSelect" md-boundary-links="$ctrl.options.boundaryLinks" md-on-paginate="$ctrl.onPagination"></md-table-pagination>
+    </md-card>
+</div>

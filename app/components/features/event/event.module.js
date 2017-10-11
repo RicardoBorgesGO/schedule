@@ -5,12 +5,29 @@ angular
     .module('schedule.events', [
         'schedule.common'
     ])
+    .config(EventConfig)
     .factory('eventData', EventData);
+
+function EventConfig($stateProvider, $mdThemingProvider) {
+    var state = {
+        name: 'event',
+        parent: 'features',
+        url: '/event',
+        redirectTo: 'event.list'
+    };
+
+    $stateProvider.state(state);
+
+    $mdThemingProvider
+        .theme('usersTheme')
+        .primaryPalette('green')
+        .accentPalette('grey');
+}
 
 function EventData() {
     return {
-        name: 'Eventos',
-        icon: 'create_new_folder',
-        link: 'event'
+        name: 'Consultas',
+        icon: 'storage',
+        link: 'event.list'
     };
 }
