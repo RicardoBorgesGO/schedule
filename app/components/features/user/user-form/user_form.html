@@ -1,0 +1,35 @@
+<div class="breadcrumbs" ncy-breadcrumb></div>
+
+<div layout="column" ng-cloak class="md-inline-form">
+    <md-card>
+        <md-toolbar class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <span>Usuário</span>
+                <div flex></div>
+            </div>
+        </md-toolbar>
+
+        <div layout-padding>
+            <form name="userForm" ng-submit="userForm.$valid && $ctrl.save()">
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Nome</label>
+                        <input ng-model="$ctrl.user.nome" placeholder="Nome do usuário" maxlength="120" required>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Email</label>
+                        <input ng-model="$ctrl.user.email" placeholder="Email do usuário" type="email">
+                    </md-input-container>
+                </div>
+
+                <md-button type="submit" class="md-raised md-primary" ng-disabled="userForm.$invalid">
+                    <md-icon ng-bind="'save'"></md-icon> Salvar
+                </md-button>
+
+            </form>
+        </div>
+    </md-card>
+</div>

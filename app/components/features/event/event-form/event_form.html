@@ -60,6 +60,8 @@
                         <tr md-row>
                             <th md-column>#</th>
                             <th md-column>Usuário</th>
+                            <th md-column>Login</th>
+                            <th md-column>Senha</th>
                             <th md-column>Configuração</th>
                         </tr>
                         </thead>
@@ -70,6 +72,12 @@
                             </td>
                             <td md-cell>
                                 {{usuario.email}}
+                            </td>
+                            <td md-cell>
+                                {{usuario.login}}
+                            </td>
+                            <td md-cell>
+                                {{usuario.password}}
                             </td>
                             <td md-cell>
                                 <md-button class="md-icon-button" aria-label="Editar usuário" ng-click="$ctrl.go(query.Query.id)">

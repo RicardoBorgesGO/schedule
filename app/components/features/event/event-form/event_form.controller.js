@@ -78,9 +78,16 @@ function EventFormController($mdDialog, $scope, EventService) {
         });
     };
 
+
+
+    //TODO fazer função para verificar se o login é igual a outro ja existente
+
+
     function DialogAddUsuarioController($scope, $mdDialog, usuario) {
         if (!usuario) {
             $scope.usuario = {};
+            $scope.usuario.login = Math.floor((Math.random() * 10000000) + 1);
+            $scope.usuario.password = makePassword();
             $scope.usuario.id = ctrl.event.usuarios.length + 1;
         }
 

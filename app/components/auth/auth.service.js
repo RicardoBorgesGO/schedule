@@ -2,16 +2,18 @@ angular
     .module('schedule.auth')
     .service('AuthService', AuthService);
 
-function AuthService() {
+function AuthService($firebaseObject, $firebaseArray, $firebaseAuth) {
+    var ref = firebase.database().ref().child('users');
+    var auth = $firebaseAuth();
     var authData = null;
 
     this.login = function (email, password) {
-        // return auth
-        //     .$signInWithEmailAndPassword(email, password)
-        //     .then(function (response) {
-        //         authData = response;
-        //         return authData;
-        //     });
+        return auth
+            .$signInWithEmailAndPassword(email, password)
+            .then(function (response) {
+                authData = response;
+                return authData;
+            });
     };
 
     this.logout = function () {

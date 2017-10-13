@@ -1,16 +1,16 @@
 /**
- * Created by ricardo on 11/10/17.
+ * Created by ricardo on 13/10/17.
  */
 angular
-    .module('schedule.events')
-    .service('EventService', EventService);
+    .module('schedule.user')
+    .service('UserService', UserService);
 
-function EventService($firebaseObject, $firebaseArray) {
+function UserService($firebaseObject, $firebaseArray) {
     var ref = firebase.database().ref();
-    var ref_events = ref.child('events');
+    var ref_users = ref.child('users');
 
     this.fetchAll = function() {
-        return $firebaseArray(ref_events).$loaded();
+        return $firebaseArray(ref_users).$loaded();
     };
 
     this.fetch = function(id) {
@@ -19,8 +19,7 @@ function EventService($firebaseObject, $firebaseArray) {
     };
 
     this.add = function(event) {
-        ref_events.push(event);
-        // return $q.when(1);
+        ref_users.push(event);
     };
 
     this.save = function(event) {

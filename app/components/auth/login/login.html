@@ -1,0 +1,21 @@
+
+    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <form name="loginForm" ng-submit="loginForm.$valid && $ctrl.login()">
+            <div>
+                <md-input-container>
+                    <label>Login</label>
+                    <input type="text" ng-model="$ctrl.email">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Senha</label>
+                    <input ng-model="$ctrl.password" type="password">
+                </md-input-container>
+            </div>
+
+            <md-button type="submit" class="md-raised md-primary">
+                Entrar
+            </md-button>
+        </form>
+    </md-content>
+

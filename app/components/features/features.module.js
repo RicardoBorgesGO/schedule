@@ -4,5 +4,6 @@
 angular.module('schedule.features', [
     'schedule.common',
     'schedule.events',
-    'schedule.schedule'
+    'schedule.schedule',
+    'schedule.user'
 ]);
