@@ -1,7 +1,7 @@
 /**
  * Created by ricardo on 04/04/17.
  */
-angular.module("schedule.core", ["ui.router", "ngMaterial", "md.data.table", "ngLodash", "ngSanitize", "firebase", "ngMaterialDateRangePicker"])
+angular.module("schedule.core", ["ui.router", "ngMaterial", "md.data.table", "ngLodash", "firebase", "ngMaterialDateRangePicker"])
 .config(CoreConfig);
 
 function CoreConfig($urlRouterProvider, $mdThemingProvider) {

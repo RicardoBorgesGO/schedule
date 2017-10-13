@@ -1,0 +1,32 @@
+<md-button class="md-fab md-fab-bottom-right md-red" ui-sref="curso.new">
+    <md-icon aria-label="Novo PPC">add</md-icon>
+</md-button>
+
+<div class="content-list">
+    <md-list flex>
+        <md-subheader class="md-no-sticky">Agendamentos</md-subheader>
+        <md-list-item ng-click="$ctrl.go(curso.$id)" class="course-item md-3-line" ng-repeat="schedule in $ctrl.schedules">
+            <div class="md-list-item-text" layout="column">
+                <h3>{{schedule.nome}}</h3>
+                <p>Data inicial: {{schedule.dataInicial | date: 'dd/MM/yyyy'}}</p>
+                <p>Data Final {{schedule.dataFinal | date: 'dd/MM/yyyy'}} </p>
+            </div>
+
+            <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat">
+                star_rate
+            </md-icon>
+
+            <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat">
+                edit
+            </md-icon>
+
+            <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat">
+                archive
+            </md-icon>
+
+            <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat">
+                delete
+            </md-icon>
+        </md-list-item>
+    </md-list>
+</div>

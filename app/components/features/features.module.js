@@ -3,5 +3,6 @@
  */
 angular.module('schedule.features', [
     'schedule.common',
-    'schedule.events'
+    'schedule.events',
+    'schedule.schedule'
 ]);
