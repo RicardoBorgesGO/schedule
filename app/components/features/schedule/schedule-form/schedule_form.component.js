@@ -9,7 +9,10 @@ angular
 function ScheduleFormComponent() {
     return {
         templateUrl: 'app/components/features/schedule/schedule-form/schedule_form.html',
-        controller: 'ScheduleFormController'
+        controller: 'ScheduleFormController',
+        bindings: {
+            scheduleData: '<'
+        }
     };
 }
 
