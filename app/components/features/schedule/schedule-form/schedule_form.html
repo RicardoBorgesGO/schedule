@@ -11,11 +11,15 @@
 
         <div layout-padding>
             <form name="queryUserForm" ng-submit="queryUserForm.$valid && $ctrl.save()">
-                <md-datepicker ng-model="$ctrl.dataUsuario.data" md-placeholder="Enter date"
+                <div layout-gt-xs="row">
+                    <md-datepicker ng-model="$ctrl.data" md-placeholder="Enter date"
                                md-date-filter="$ctrl.dateValid" ng-change="$ctrl.onSelect()"></md-datepicker>
 
-                <div ng-repeat="hour in $ctrl.hours">
-                    <span>{{hour}}</span>
+                    <div style="width: 250px; margin-left: 250px;">
+                        <md-button ng-disabled="$ctrl.schedule.hour == hour" class="md-raised" ng-repeat="hour in $ctrl.hours" ng-click="$ctrl.onSelecthour(hour)">
+                            {{hour}}
+                        </md-button>
+                    </div>
                 </div>
 
                 <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid">

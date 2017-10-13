@@ -5,31 +5,21 @@ angular
     .module('schedule.schedule')
     .controller('ScheduleFormController', ScheduleFormController);
 
-function ScheduleFormController($scope) {
+function ScheduleFormController($scope, ScheduleService) {
     var ctrl = this;
     ctrl.hours = [];
 
     ctrl.$onInit = function () {
-        // console.log(ctrl.scheduleData);
-        // ctrl.dataInicial = new Date(ctrl.scheduleData.dataInicial);
-        // ctrl.dataFinal = new Date(ctrl.scheduleData.dataFinal);
+        ctrl.schedule = {};
     };
-
-    // $scope.$watch('[$ctrl.dataUsuario.data]', function() {
-    //     angular.forEach(ctrl.scheduleData.times, function (data) {
-    //         if (ctrl.dataUsuario.data == data.dia) {
-    //             console.log(data.dia);
-    //         }
-    //     });
-    // });
 
     ctrl.onSelect = function () {
         angular.forEach(ctrl.scheduleData.times, function (data) {
-            if (ctrl.dataUsuario.data.getDate() == data.dia) {
+            if (ctrl.data.getDate() == data.dia) {
                 var dateThis = new moment(data.timeInicial);
                 var dateFinalThis = new moment(data.timeFinal);
                 while (!dateThis.isAfter(dateFinalThis)) {
-                    var dateStr = dateThis.get('hour') + ':' + dateThis.get('minute');
+                    var dateStr = dateThis.get('hour') + ':' + (dateThis.get('minute') < 10 ? '0' + dateThis.get('minute'):dateThis.get('minute'));
                     ctrl.hours.push(dateStr);
 
                     dateThis = moment(dateThis).add(ctrl.scheduleData.intervalo, 'm');
@@ -37,6 +27,16 @@ function ScheduleFormController($scope) {
 
             }
         });
+    };
+
+    ctrl.onSelecthour = function (hour) {
+        ctrl.schedule.hour = hour;
+    };
+
+    ctrl.save = function () {
+        ctrl.schedule.data = ctrl.data.getTime();
+
+        ScheduleService.add(ctrl.schedule);
     };
 
     ctrl.dateValid = function ($date) {

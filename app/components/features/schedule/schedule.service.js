@@ -7,7 +7,7 @@ angular
 
 function ScheduleService($firebaseObject, $firebaseArray, $http, $q) {
     var ref = firebase.database().ref();
-    var ref_events = ref.child('events');
+    var ref_events = ref.child('schedule');
 
     this.fetchAll = function() {
         return $firebaseArray(ref_events).$loaded();
