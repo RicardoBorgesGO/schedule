@@ -11,19 +11,12 @@
 
         <div layout-padding>
             <form name="queryUserForm" ng-submit="queryUserForm.$valid && $ctrl.save()">
-                <md-date-range-picker
-                        date-start="$ctrl.dataInicial"
-                        date-end="$ctrl.dataFinal"
-                        selected-template-name="selectedRange.selectedTemplateName"
-                        selected-template="selectedRange.selectedTemplate"
-                        show-template="false"
-                        first-day-of-week="0"
-                        disable-templates="TW"
-                        one-panel="true"
-                        ng-model="$ctrl.intervaloData"
-                        custom-templates="mdCustomTemplates"
-                        is-disabled-date="$ctrl.dateValid($date)"
-                ></md-date-range-picker>
+                <md-datepicker ng-model="$ctrl.dataUsuario.data" md-placeholder="Enter date"
+                               md-date-filter="$ctrl.dateValid" ng-change="$ctrl.onSelect()"></md-datepicker>
+
+                <div ng-repeat="hour in $ctrl.hours">
+                    <span>{{hour}}</span>
+                </div>
 
                 <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid">
                     <md-icon ng-bind="'check'"></md-icon> Marcar

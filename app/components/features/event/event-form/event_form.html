@@ -6,34 +6,53 @@
             <div class="md-toolbar-tools">
                 <span>Evento</span>
                 <div flex></div>
-
-                <md-icon ng-click="$ctrl.goGraphql()" style="cursor: pointer;">
-                    <md-tooltip md-direction="left">Acessar explorador de dados</md-tooltip>
-                    open_in_new
-                </md-icon>
             </div>
         </md-toolbar>
 
         <div layout-padding>
             <form name="queryUserForm" ng-submit="queryUserForm.$valid && $ctrl.save()">
-                <md-input-container class="md-block">
-                    <label>Nome</label>
-                    <input ng-model="$ctrl.event.nome" placeholder="Nome do evento" maxlength="120">
-                </md-input-container>
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Nome</label>
+                        <input ng-model="$ctrl.event.nome" placeholder="Nome do evento" maxlength="120">
+                    </md-input-container>
+                </div>
 
-                <md-date-range-picker
-                        date-start="$ctrl.dataInicial"
-                        date-end="$ctrl.dataFinal"
-                        selected-template-name="selectedRange.selectedTemplateName"
-                        selected-template="selectedRange.selectedTemplate"
-                        show-template="false"
-                        first-day-of-week="0"
-                        disable-templates="TW"
-                        one-panel="true"
-                        ng-model="$ctrl.intervaloData"
-                        custom-templates="mdCustomTemplates"
-                ></md-date-range-picker>
+                <div layout-gt-xs="row">
+                    <div flex-gt-sm>
+                        <md-date-range-picker
+                                date-start="$ctrl.dataInicial"
+                                date-end="$ctrl.dataFinal"
+                                selected-template-name="selectedRange.selectedTemplateName"
+                                selected-template="selectedRange.selectedTemplate"
+                                show-template="false"
+                                first-day-of-week="0"
+                                disable-templates="TW"
+                                one-panel="true"
+                                custom-templates="mdCustomTemplates"
+                        ></md-date-range-picker>
+                    </div>
 
+
+                    <div ng-repeat="interval in $ctrl.getNumber($ctrl.intervalDate) track by $index" flex-gt-sm>
+                        <md-input-container flex-gt-sm>
+                            <label>Horário inicial</label>
+                            <input ng-model="$ctrl.timeInicial['data' + $index]" type="time">
+                        </md-input-container>
+
+                        <md-input-container flex-gt-sm>
+                            <label>Horário final</label>
+                            <input ng-model="$ctrl.timeFinal['data' + $index]" type="time">
+                        </md-input-container>
+                    </div>
+                </div>
+
+                <div layout-gt-xs="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Intevalo</label>
+                        <input ng-model="$ctrl.event.intervalo" placeholder="Intervalo de tempo" type="number">
+                    </md-input-container>
+                </div>
 
                 <md-table-container>
                     <table md-table ng-model="selected" md-progress="properties">

@@ -8,8 +8,9 @@ angular
     .module('schedule.events')
     .controller('EventFormController', EventFormController);
 
-function EventFormController($mdDialog, EventService) {
+function EventFormController($mdDialog, $scope, EventService) {
     var ctrl = this;
+    var interval = 0;
 
     ctrl.$onInit = function () {
         if (!ctrl.event) {
@@ -18,6 +19,11 @@ function EventFormController($mdDialog, EventService) {
                 ctrl.event.usuarios = [];
             }
         }
+
+        ctrl.intervalDate = 0;
+
+        // ctrl.timeInicial = {};
+        // ctrl.timeFinal = {};
     };
 
     ctrl.selectedRange = {
@@ -29,9 +35,35 @@ function EventFormController($mdDialog, EventService) {
         fullscreen: false
     };
 
+    $scope.$watch('[$ctrl.dataFinal, $ctrl.dataInicial]', function() {
+        var a = moment(ctrl.dataFinal);
+        var b = moment(ctrl.dataInicial);
+        interval = a.diff(b, 'days');
+
+        if (interval > 0)
+            interval = interval+1;
+
+        ctrl.intervalDate = interval;
+    });
+
+    ctrl.getNumber = function(num) {
+        return new Array(num);
+    }
+
     ctrl.save = function () {
         ctrl.event.dataInicial = ctrl.dataInicial.getTime();
         ctrl.event.dataFinal = ctrl.dataFinal.getTime();
+        ctrl.event.times = [];
+        var dia = ctrl.dataInicial.getDate();
+
+        for (var i = 0; i < interval; i++) {
+            var time = {
+                timeInicial: ctrl.timeInicial['data' + i].getTime(),
+                timeFinal: ctrl.timeFinal['data' + i].getTime(),
+                dia: dia+i
+            }
+            ctrl.event.times.push(time);
+        }
 
         EventService.add(angular.copy(ctrl.event));
     };
