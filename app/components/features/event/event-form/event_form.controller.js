@@ -20,10 +20,8 @@ function EventFormController($mdDialog, $scope, EventService) {
             }
         }
 
-        ctrl.intervalDate = 0;
-
-        // ctrl.timeInicial = {};
-        // ctrl.timeFinal = {};
+        ctrl.intervalDate = {};
+        // ctrl.intervalDate.intervalo = 0;
     };
 
     ctrl.selectedRange = {
@@ -43,7 +41,14 @@ function EventFormController($mdDialog, $scope, EventService) {
         if (interval > 0)
             interval = interval+1;
 
-        ctrl.intervalDate = interval;
+        var dia = ctrl.dataInicial.getDate();
+        var days = [];
+        for (var i = 0; i < interval; i++) {
+            days.push(dia+i);
+        }
+
+        // ctrl.intervalDate.intervalo = interval;
+        ctrl.intervalDate.days = days;
     });
 
     ctrl.getNumber = function(num) {

@@ -19,7 +19,7 @@
                 </div>
 
                 <div layout-gt-xs="row">
-                    <div flex-gt-sm>
+                    <div>
                         <md-date-range-picker
                                 date-start="$ctrl.dataInicial"
                                 date-end="$ctrl.dataFinal"
@@ -34,16 +34,19 @@
                     </div>
 
 
-                    <div ng-repeat="interval in $ctrl.getNumber($ctrl.intervalDate) track by $index" flex-gt-sm>
-                        <md-input-container flex-gt-sm>
-                            <label>Horário inicial</label>
-                            <input ng-model="$ctrl.timeInicial['data' + $index]" type="time">
-                        </md-input-container>
+                    <div layout="row" layout-wrap flex style="margin-left: 70px;">
+                        <div ng-repeat="days in $ctrl.intervalDate.days" flex="25">
+                            <div>Dia <span style="font-weight: 800;">{{days}}</span></div>
+                            <md-input-container flex-gt-sm>
+                                <label>Inicio</label>
+                                <input ng-model="$ctrl.timeInicial['data' + $index]" type="time">
+                            </md-input-container>
 
-                        <md-input-container flex-gt-sm>
-                            <label>Horário final</label>
-                            <input ng-model="$ctrl.timeFinal['data' + $index]" type="time">
-                        </md-input-container>
+                            <md-input-container flex-gt-sm>
+                                <label>Final</label>
+                                <input ng-model="$ctrl.timeFinal['data' + $index]" type="time">
+                            </md-input-container>
+                        </div>
                     </div>
                 </div>
 

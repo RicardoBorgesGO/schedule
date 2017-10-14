@@ -27,8 +27,8 @@ function commonConfig($stateProvider, $urlRouterProvider,
    /* DEFAULT THEME */
     $mdThemingProvider
         .theme('default')
-        .primaryPalette('blue', {
-            'default': '500',
+        .primaryPalette('light-green', {
+            'default': '700',
             'hue-1': '600',
             'hue-2': '700',
             'hue-3': '800'
