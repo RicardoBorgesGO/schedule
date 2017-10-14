@@ -54,55 +54,6 @@
                     </md-input-container>
                 </div>
 
-                <md-table-container>
-                    <table md-table ng-model="selected" md-progress="properties">
-                        <thead md-head>
-                        <tr md-row>
-                            <th md-column>#</th>
-                            <th md-column>Usuário</th>
-                            <th md-column>Login</th>
-                            <th md-column>Senha</th>
-                            <th md-column>Configuração</th>
-                        </tr>
-                        </thead>
-                        <tbody md-body>
-                        <tr md-row ng-repeat="usuario in $ctrl.event.usuarios">
-                            <td md-cell>
-                                {{usuario.id}}
-                            </td>
-                            <td md-cell>
-                                {{usuario.email}}
-                            </td>
-                            <td md-cell>
-                                {{usuario.login}}
-                            </td>
-                            <td md-cell>
-                                {{usuario.password}}
-                            </td>
-                            <td md-cell>
-                                <md-button class="md-icon-button" aria-label="Editar usuário" ng-click="$ctrl.go(query.Query.id)">
-                                    <md-icon>mode_edit</md-icon>
-                                </md-button>
-
-                                <md-button class="md-icon-button" aria-label="Remover usuário" ng-click="$ctrl.remove(query.Query.id)">
-                                    <md-icon>delete</md-icon>
-                                </md-button>
-                            </td>
-                        </tr>
-                        <tr md-row ng-if="$ctrl.querys.length < 1">
-                            <td md-cell colspan="6">Não existem registros cadastrados.</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div layout="row" layout-align="end end">
-                        <div flex></div>
-                        <md-button class="md-fab md-mini md-primary" ng-click="$ctrl.showAddUsuarioDialog()">
-                            <md-icon>add</md-icon>
-                        </md-button>
-                    </div>
-                </md-table-container>
-
-
                 <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid">
                     <md-icon ng-bind="'save'"></md-icon> Salvar
                 </md-button>

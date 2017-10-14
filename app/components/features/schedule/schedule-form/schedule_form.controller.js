@@ -11,9 +11,17 @@ function ScheduleFormController($scope, ScheduleService) {
 
     ctrl.$onInit = function () {
         ctrl.schedule = {};
+        ctrl.data = new Date(ctrl.scheduleData.dataInicial);
+
+        loadHours();
     };
 
     ctrl.onSelect = function () {
+        loadHours();
+    };
+
+    function loadHours() {
+        ctrl.hours = [];
         angular.forEach(ctrl.scheduleData.times, function (data) {
             if (ctrl.data.getDate() == data.dia) {
                 var dateThis = new moment(data.timeInicial);
@@ -27,7 +35,7 @@ function ScheduleFormController($scope, ScheduleService) {
 
             }
         });
-    };
+    }
 
     ctrl.onSelecthour = function (hour) {
         ctrl.schedule.hour = hour;

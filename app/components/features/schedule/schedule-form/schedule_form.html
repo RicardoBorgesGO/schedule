@@ -12,9 +12,8 @@
         <div layout-padding>
             <form name="queryUserForm" ng-submit="queryUserForm.$valid && $ctrl.save()">
                 <div layout-gt-xs="row">
-                    <md-datepicker ng-model="$ctrl.data" md-placeholder="Enter date"
-                               md-date-filter="$ctrl.dateValid" ng-change="$ctrl.onSelect()"></md-datepicker>
-
+                    <md-calendar md-min-date="$ctrl.data" ng-model="$ctrl.data"
+                                 md-date-filter="$ctrl.dateValid" ng-change="$ctrl.onSelect()"></md-calendar>
                     <div style="width: 250px; margin-left: 250px;">
                         <md-button ng-disabled="$ctrl.schedule.hour == hour" class="md-raised" ng-repeat="hour in $ctrl.hours" ng-click="$ctrl.onSelecthour(hour)">
                             {{hour}}
