@@ -9,7 +9,10 @@ angular
 function EventFormComponent() {
     return {
         templateUrl: 'app/components/features/event/event-form/event_form.html',
-        controller: 'EventFormController'
+        controller: 'EventFormController',
+        bindings: {
+            event: '<'
+        }
     };
 }
 
@@ -26,12 +29,11 @@ function EventFormConfig($stateProvider) {
         name: 'event.edit',
         url: '/edit/:id',
         component: 'eventForm',
-        // resolve: {
-        //     queryData: function($transition$, ManagerService) {
-        //         var params = {id: $transition$.params().id}
-        //         return ManagerService.fetchQueryById(params);
-        //     }
-        // },
+        resolve: {
+            event: function($transition$, EventService) {
+                return EventService.fetch($transition$.params().id);
+            }
+        },
         ncyBreadcrumb: {
             parent: 'event.list',
             label: 'Edição de evento'

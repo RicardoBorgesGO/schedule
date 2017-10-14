@@ -5,6 +5,10 @@ angular
     .module('schedule.events')
     .controller('EventListController', EventListController);
 
-function EventListController() {
+function EventListController($state) {
     var ctrl = this;
+
+    ctrl.go = function (id) {
+        $state.go('event.edit', {id: id});
+    };
 }

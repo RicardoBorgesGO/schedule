@@ -13,11 +13,16 @@ function EventFormController($mdDialog, $scope, EventService) {
     var interval = 0;
 
     ctrl.$onInit = function () {
+
+        console.log(ctrl.event);
         if (!ctrl.event) {
             ctrl.event = {};
             if (!ctrl.event.usuarios){
                 ctrl.event.usuarios = [];
             }
+        } else {
+            ctrl.dataInicial = new Date(ctrl.event.dataInicial);
+            ctrl.dataFinal = new Date(ctrl.event.dataFinal);
         }
 
         ctrl.intervalDate = {};
@@ -34,21 +39,23 @@ function EventFormController($mdDialog, $scope, EventService) {
     };
 
     $scope.$watch('[$ctrl.dataFinal, $ctrl.dataInicial]', function() {
-        var a = moment(ctrl.dataFinal);
-        var b = moment(ctrl.dataInicial);
-        interval = a.diff(b, 'days');
+        if (ctrl.dataInicial) {
+            var a = moment(ctrl.dataFinal);
+            var b = moment(ctrl.dataInicial);
+            interval = a.diff(b, 'days');
 
-        if (interval > 0)
-            interval = interval+1;
+            if (interval > 0)
+                interval = interval+1;
 
-        var dia = ctrl.dataInicial.getDate();
-        var days = [];
-        for (var i = 0; i < interval; i++) {
-            days.push(dia+i);
+            var dia = ctrl.dataInicial.getDate();
+            var days = [];
+            for (var i = 0; i < interval; i++) {
+                days.push(dia + i);
+            }
+
+            //ctrl.intervalDate.intervalo = interval;
+            ctrl.intervalDate.days = days;
         }
-
-        // ctrl.intervalDate.intervalo = interval;
-        ctrl.intervalDate.days = days;
     });
 
     ctrl.getNumber = function(num) {
