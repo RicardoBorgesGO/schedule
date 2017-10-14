@@ -28,6 +28,6 @@ function EventService($firebaseObject, $firebaseArray) {
     };
 
     this.remove = function(event) {
-        return event.$remove();
+        return ref_events.child(event.$id).remove();
     };
 }
