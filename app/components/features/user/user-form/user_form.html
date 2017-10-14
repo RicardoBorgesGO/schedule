@@ -27,8 +27,8 @@
 
                 <h3>Serviços</h3>
 
-                <div layout-wrap>
-                    <md-checkbox
+                <div layout="row" layout-wrap flex>
+                    <md-checkbox flex="50"
                             ng-repeat="event in $ctrl.events | orderBy: 'nome'"
                             ng-model="event.selected"
                             aria-label="Eventos">

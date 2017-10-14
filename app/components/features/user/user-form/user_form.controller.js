@@ -27,6 +27,15 @@ function UserFormController($state, UserService, AuthService) {
         AuthService.createUser(ctrl.user.email, password);
         ctrl.user.password = password;
 
+        ctrl.user.events = _.chain(ctrl.events)
+            .filter(function(event){
+                return event.selected;
+            })
+            .map(function(event){
+                return event.$id;
+            })
+            .value();
+
         UserService.add(ctrl.user);
     };
 }
