@@ -25,6 +25,17 @@
                     </md-input-container>
                 </div>
 
+                <h3>Serviços</h3>
+
+                <div layout-wrap>
+                    <md-checkbox
+                            ng-repeat="event in $ctrl.events | orderBy: 'nome'"
+                            ng-model="event.selected"
+                            aria-label="Eventos">
+                        {{event.nome}}
+                    </md-checkbox>
+                </div>
+
                 <md-button type="submit" class="md-raised md-primary" ng-disabled="userForm.$invalid">
                     <md-icon ng-bind="'save'"></md-icon> Salvar
                 </md-button>

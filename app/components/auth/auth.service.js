@@ -7,6 +7,16 @@ function AuthService($firebaseObject, $firebaseArray, $firebaseAuth) {
     var auth = $firebaseAuth();
     var authData = null;
 
+    this.createUser = function (email, password) {
+        return auth
+            .$createUserWithEmailAndPassword(email, password)
+            .then(function (response) {
+                console.log(response);
+                // authData = response;
+                // return authData;
+            });
+    };
+
     this.login = function (email, password) {
         return auth
             .$signInWithEmailAndPassword(email, password)

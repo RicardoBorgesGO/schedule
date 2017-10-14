@@ -9,7 +9,10 @@ angular
 function UserFormComponent() {
     return {
         templateUrl: 'app/components/features/user/user-form/user_form.html',
-        controller: 'UserFormController'
+        controller: 'UserFormController',
+        bindings: {
+            events: '<'
+        }
     };
 }
 
@@ -18,6 +21,11 @@ function UserFormConfig($stateProvider) {
         name: 'user.new',
         url: '/new',
         component: 'userForm',
+        resolve: {
+            events: function (EventService) {
+                return EventService.fetchAll();
+            }
+        },
         ncyBreadcrumb: {
             parent: 'user.list',
             label: 'Cadastro de eventos'
