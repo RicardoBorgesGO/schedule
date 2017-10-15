@@ -19,13 +19,11 @@
 
 <!-- MAIN CONTENT -->
 <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-<div flex layout="row" style="position: relative;">
-
+<div flex layout="row" style="position: relative; height: 100%;">
     <sidebar
+            ng-if="isAdmin"
             layout="column"
-            toggle-sidebar="$ctrl.toggleSidebar"
-            features="$ctrl.features"
-            course-data="$ctrl.courseData"></sidebar>
+            features="features"></sidebar>
 
-    <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="$ctrl.toggleSidebar ? '' : 'content-site'"></md-content>
+    <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="isAdmin ? 'content-site' : ''"></md-content>
 </div>

@@ -6,4 +6,12 @@ angular.module('schedule.features', [
     'schedule.events',
     'schedule.schedule',
     'schedule.user'
-]);
+]).factory('featuresData', FeaturesData);;
+
+function FeaturesData() {
+    return {
+        name: 'Início',
+        icon: 'home',
+        link: 'features'
+    };
+};

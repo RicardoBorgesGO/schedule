@@ -13,7 +13,6 @@ function AuthService($state, $window, $firebaseObject, $firebaseArray, $firebase
             .then(function (response) {
                 userData.uid = response.uid;
                 UserService.add(userData);
-                // console.log(response);
             });
     };
     
@@ -34,17 +33,8 @@ function AuthService($state, $window, $firebaseObject, $firebaseArray, $firebase
         return auth
             .$signInWithEmailAndPassword(email, password)
             .then(function (response) {
-
-                // UserService.fetchByUID(response.uid).then(function (res) {
-                //     var user;
-                //     for (var property in res) {
-                //         user = res[property];
-                //     }
-
-                    authData = response;
-                    // authData.isAdmin = user.isAdmin;
-                    return authData;
-                // });
+                authData = response;
+                return authData;
             });
     };
 
@@ -75,22 +65,15 @@ function AuthService($state, $window, $firebaseObject, $firebaseArray, $firebase
         return !!authData;
     };
 
+    this.isAdmin = function () {
+        return this.getUserData().then(function (res) {
+            return res[Object.keys(res)[0]].isAdmin;
+        });
+    };
+
     this.getUserData = function() {
-        // var user = {
-        //     "name" : "Ricardo Borges",
-        //     "services": ["event"]
-        // }
-        // var ref_users = ref.child('users');
-
-        var ref_user = ref.orderByChild('uid').equalTo(authData.uid);
-        return $firebaseObject(ref_user).$loaded();
-
-        // UserService.fetchByUID(authData.uid).then(function (res) {
-        //     console.log(res);
-        //     return $firebaseObject(res).$loaded();
-        // });
-        // console.log(ref_user);
-
-        // return user;
+        return ref.orderByChild('uid').equalTo(authData.uid).once('value').then(function (res) {
+            return res.val();
+        });
     };
 }

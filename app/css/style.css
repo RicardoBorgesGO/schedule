@@ -45,9 +45,9 @@ md-sidenav {
     /*position: fixed !important;*/
 }
 
-/*.content-site {*/
-    /*padding-left: 250px;*/
-/*}*/
+.content-site {
+    padding-left: 250px;
+}
 
 .content-list {
     width: 80%;

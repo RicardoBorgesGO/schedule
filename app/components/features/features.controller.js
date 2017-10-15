@@ -8,6 +8,11 @@ angular
 function FeaturesController(FeaturesService, AuthService, $scope, $rootScope, $state, $stateParams) {
     var ctrl = this;
 
+    ctrl.$onInit = function () {
+        $scope.features = ctrl.features;
+        $scope.isAdmin = ctrl.isAdmin;
+    };
+
     $scope.logout = function () {
         AuthService.logout();
     };

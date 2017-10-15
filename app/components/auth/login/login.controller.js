@@ -13,10 +13,16 @@ function LoginController(AuthService, $state) {
         AuthService.login(ctrl.email, ctrl.password)
             .then(function(user) {
                 ctrl.error = false;
-                $state.go('features');
+                AuthService.isAdmin().then(function (admin) {
+                    if (admin) {
+                        $state.go('features');
+                    } else {
+                        $state.go('schedule.list');
+                    }
+                });
             }).catch(function(error) {
-            console.error("Authentication failed:", error);
-            ctrl.error = true;
-        });
+                console.error("Authentication failed:", error);
+                ctrl.error = true;
+            });
     };
 }

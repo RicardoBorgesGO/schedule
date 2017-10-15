@@ -12,7 +12,8 @@ function featuresComponent() {
         controller: 'FeaturesController',
         bindings: {
             user: '<',
-            features: '<'
+            features: '<',
+            isAdmin: '<'
         }
     }
 }
@@ -29,9 +30,16 @@ function featuresConfig($stateProvider) {
             user: function (AuthService) {
                 return AuthService.getUserData();
             },
+            isAdmin: function (user) {
+                return user[Object.keys(user)[0]].isAdmin;
+            },
             features: function (FeaturesService, user) {
-                console.log('USER', user);
-                return FeaturesService.loadSidenav(user.services);
+                var services = [];
+                if (user[Object.keys(user)[0]].isAdmin){
+                    services = ['features', 'user', 'event'];
+                }
+
+                return FeaturesService.loadSidenav(services);
             }
         }
     };

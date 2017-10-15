@@ -1,0 +1,52 @@
+<md-sidenav flex
+            layout="column"
+            class="md-sidenav-left md-whiteframe-z1"
+            role="sidenav"
+            md-component-id="sidebar"
+            md-whiteframe="4" md-disable-backdrop md-is-open="true">
+
+    <md-content class="custom-sidebar" layout="column" flex>
+
+        <md-list show-gt-md ng-repeat="feature in $ctrl.features">
+            <md-list-item ng-class="feature.expand ? 'menu_active': ''" ng-click="feature.expand = !feature.expand" ng-if="feature.subservices.length > 0">
+                <md-icon ng-if="!feature.svg_icon" aria-label="{{feature.name}}">
+                    {{feature.icon ? feature.icon : 'reorder'}}
+                </md-icon>
+
+                <md-icon md-svg-src="{{feature.svg_icon}}" aria-label="{{feature.name}}" ng-if="feature.svg_icon">
+                    {{feature.icon ? feature.icon : 'reorder'}}
+                </md-icon>
+
+                <p hide show-gt-md class="md-body-2">{{feature.name}}</p>
+
+                <md-icon class="md-icon-button">
+                    {{feature.expand ? 'arrow_drop_up' : 'arrow_drop_down'}}
+                </md-icon>
+            </md-list-item>
+
+            <md-list-item ng-class="feature.expand ? 'menu_active': ''"
+                          class="sublist"
+                          ng-show="feature.expand"
+                          ng-repeat="sub in feature.subservices"
+                          ng-click="$ctrl.go(sub.link)">
+
+                <p flex class="md-body-1">{{sub.name}}</p>
+
+            </md-list-item>
+
+            <md-list-item ng-if="!feature.subservices" ng-click="$ctrl.go(feature.link)">
+                <md-icon aria-label="{{feature.name}}" ng-if="!feature.svg_icon">
+                    {{feature.icon ? feature.icon : 'reorder'}}
+                </md-icon>
+
+                <md-icon md-svg-src="{{feature.svg_icon}}" aria-label="{{feature.name}}" ng-if="feature.svg_icon">
+                    {{feature.icon ? feature.icon : 'reorder'}}
+                </md-icon>
+
+                <p flex class="md-body-1">{{feature.name}}</p>
+
+            </md-list-item>
+        </md-list>
+    </md-content>
+
+</md-sidenav>

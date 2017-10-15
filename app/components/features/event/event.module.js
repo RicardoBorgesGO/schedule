@@ -26,8 +26,8 @@ function EventConfig($stateProvider, $mdThemingProvider) {
 
 function EventData() {
     return {
-        name: 'Consultas',
-        icon: 'storage',
+        name: 'Eventos',
+        icon: 'schedule',
         link: 'event.list'
     };
 }
