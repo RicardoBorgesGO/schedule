@@ -26,8 +26,8 @@ function UserConfig($stateProvider, $mdThemingProvider) {
 
 function UserData() {
     return {
-        name: 'Consultas',
-        icon: 'storage',
+        name: 'Usuários',
+        icon: 'user',
         link: 'user.list'
     };
 }

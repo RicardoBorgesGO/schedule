@@ -30,6 +30,7 @@ function featuresConfig($stateProvider) {
                 return AuthService.getUserData();
             },
             features: function (FeaturesService, user) {
+                console.log('USER', user);
                 return FeaturesService.loadSidenav(user.services);
             }
         }

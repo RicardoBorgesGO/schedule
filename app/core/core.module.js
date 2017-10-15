@@ -25,7 +25,7 @@ function CoreConfig($urlRouterProvider, $mdThemingProvider) {
     firebase.initializeApp(config);
 }
 
-function CoreRun($transitions, $state, AuthService) {
+function CoreRun($transitions, $state, AuthService, UserService) {
     $transitions.onStart({
         to: function (state) {
             return !!(state.data && state.data.requiredAuth);

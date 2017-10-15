@@ -2,7 +2,7 @@ angular
     .module('schedule.auth')
     .service('AuthService', AuthService);
 
-function AuthService($firebaseObject, $firebaseArray, $firebaseAuth, UserService, ToastService) {
+function AuthService($state, $window, $firebaseObject, $firebaseArray, $firebaseAuth, UserService, ToastService) {
     var ref = firebase.database().ref().child('users');
     var auth = $firebaseAuth();
     var authData = null;
@@ -34,8 +34,17 @@ function AuthService($firebaseObject, $firebaseArray, $firebaseAuth, UserService
         return auth
             .$signInWithEmailAndPassword(email, password)
             .then(function (response) {
-                authData = response;
-                return authData;
+
+                // UserService.fetchByUID(response.uid).then(function (res) {
+                //     var user;
+                //     for (var property in res) {
+                //         user = res[property];
+                //     }
+
+                    authData = response;
+                    // authData.isAdmin = user.isAdmin;
+                    return authData;
+                // });
             });
     };
 
@@ -44,6 +53,7 @@ function AuthService($firebaseObject, $firebaseArray, $firebaseAuth, UserService
             .$signOut()
             .then(function () {
                 authData = null;
+                $state.go('login');
             });
     };
 
@@ -70,8 +80,17 @@ function AuthService($firebaseObject, $firebaseArray, $firebaseAuth, UserService
         //     "name" : "Ricardo Borges",
         //     "services": ["event"]
         // }
-        var ref_user = ref.child(authData.uid);
+        // var ref_users = ref.child('users');
+
+        var ref_user = ref.orderByChild('uid').equalTo(authData.uid);
         return $firebaseObject(ref_user).$loaded();
+
+        // UserService.fetchByUID(authData.uid).then(function (res) {
+        //     console.log(res);
+        //     return $firebaseObject(res).$loaded();
+        // });
+        // console.log(ref_user);
+
         // return user;
     };
 }

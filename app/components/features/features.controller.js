@@ -5,11 +5,15 @@ angular
     .module('schedule.features')
     .controller('FeaturesController', FeaturesController);
 
-function FeaturesController(FeaturesService, AuthService, $rootScope, $state) {
+function FeaturesController(FeaturesService, AuthService, $scope, $rootScope, $state, $stateParams) {
     var ctrl = this;
 
-    ctrl.logout = function () {
+    $scope.logout = function () {
         AuthService.logout();
+    };
+
+    $scope.back = function () {
+        $state.go('login');
     };
 
     // ctrl.$onInit = function() {
@@ -27,7 +31,6 @@ function FeaturesController(FeaturesService, AuthService, $rootScope, $state) {
     //         loadTheme(null, {theme: theme});
     //     }
     // };
-    //
     // ctrl.$onDestroy = function() {
     //     FeaturesService.destroy();
     // };

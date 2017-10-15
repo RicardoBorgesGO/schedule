@@ -17,6 +17,13 @@ function commonConfig($stateProvider, $urlRouterProvider,
 
     $stateProvider.state(state);
 
+    $stateProvider.state('logout', {
+        url: '/logout',
+        controller: function($scope, $route) {
+            $route.reload()
+        }
+    });
+
     $urlRouterProvider
         .when('', '/login')
         .when('/', '/login')
