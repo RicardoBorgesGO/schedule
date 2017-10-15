@@ -2,19 +2,32 @@ angular
     .module('schedule.auth')
     .service('AuthService', AuthService);
 
-function AuthService($firebaseObject, $firebaseArray, $firebaseAuth) {
+function AuthService($firebaseObject, $firebaseArray, $firebaseAuth, UserService, ToastService) {
     var ref = firebase.database().ref().child('users');
     var auth = $firebaseAuth();
     var authData = null;
 
-    this.createUser = function (email, password) {
+    this.createUser = function (userData) {
         return auth
-            .$createUserWithEmailAndPassword(email, password)
+            .$createUserWithEmailAndPassword(userData.email, userData.password)
             .then(function (response) {
-                console.log(response);
-                // authData = response;
-                // return authData;
+                userData.uid = response.uid;
+                UserService.add(userData);
+                // console.log(response);
             });
+    };
+    
+    this.removeUser = function (user) {
+        if (user.uid) {
+            auth.$deleteUser(user.uid).then(function (response) {
+                console.log(response);
+                UserService.remove(user).then(function (res) {
+                    ToastService.success('removed');
+                });
+            });
+        } else {
+            console.log('Não tem uid');
+        }
     };
 
     this.login = function (email, password) {
@@ -27,38 +40,38 @@ function AuthService($firebaseObject, $firebaseArray, $firebaseAuth) {
     };
 
     this.logout = function () {
-        // return auth
-        //     .$signOut()
-        //     .then(function () {
-        //         authData = null;
-        //     });
+        return auth
+            .$signOut()
+            .then(function () {
+                authData = null;
+            });
     };
 
     this.requireAuthentication = function () {
-        // return auth
-        //     .$waitForSignIn()
-        //     .then(function (user) {
-        //         authData = user;
-        //         return auth.$requireSignIn();
-        //     });
+        return auth
+            .$waitForSignIn()
+            .then(function (user) {
+                authData = user;
+                return auth.$requireSignIn();
+            });
     };
 
     this.onStateChanged = function(callback) {
-        // return auth
-        //     .$onAuthStateChanged(callback);
+        return auth
+            .$onAuthStateChanged(callback);
     };
 
     this.isAuthenticated = function () {
-        // return !!authData;
+        return !!authData;
     };
 
     this.getUserData = function() {
-        var user = {
-            "name" : "Ricardo Borges",
-            "services": ["event"]
-        }
-        // var ref_user = ref.child(authData.uid);
-        // return $firebaseObject(ref_user).$loaded();
-        return user;
+        // var user = {
+        //     "name" : "Ricardo Borges",
+        //     "services": ["event"]
+        // }
+        var ref_user = ref.child(authData.uid);
+        return $firebaseObject(ref_user).$loaded();
+        // return user;
     };
 }

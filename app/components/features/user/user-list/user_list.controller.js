@@ -5,6 +5,24 @@ angular
     .module('schedule.user')
     .controller('UserListController', UserListController);
 
-function UserListController() {
+function UserListController($state, DialogService, UserService, ToastService, AuthService) {
     var ctrl = this;
+
+    ctrl.$onInit = function () {
+        // console.log(AuthService.getUserData());
+    };
+
+    ctrl.remove = function (user) {
+        DialogService.confirmRemove()
+            .then(function() {
+                AuthService.removeUser(user);
+                // .then(function (response) {
+                //     ToastService.success('removed');
+                // });
+            });
+    };
+
+    ctrl.go = function (id) {
+        $state.go('user.edit', {id: id});
+    };
 }

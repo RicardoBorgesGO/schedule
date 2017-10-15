@@ -23,7 +23,7 @@ function featuresConfig($stateProvider) {
         url: '/features',
         component: 'features',
         data: {
-            requiredAuth: false
+            requiredAuth: true
         },
         resolve: {
             user: function (AuthService) {

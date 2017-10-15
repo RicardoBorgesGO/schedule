@@ -11,7 +11,8 @@ function UserFormComponent() {
         templateUrl: 'app/components/features/user/user-form/user_form.html',
         controller: 'UserFormController',
         bindings: {
-            events: '<'
+            events: '<',
+            userData: '<'
         }
     };
 }
@@ -34,12 +35,14 @@ function UserFormConfig($stateProvider) {
         name: 'user.edit',
         url: '/edit/:id',
         component: 'userForm',
-        // resolve: {
-        //     queryData: function($transition$, ManagerService) {
-        //         var params = {id: $transition$.params().id}
-        //         return ManagerService.fetchQueryById(params);
-        //     }
-        // },
+        resolve: {
+            userData: function($transition$, UserService) {
+                return UserService.fetch($transition$.params().id);
+            },
+            events: function (EventService) {
+                return EventService.fetchAll();
+            }
+        },
         ncyBreadcrumb: {
             parent: 'user.list',
             label: 'Edição de evento'

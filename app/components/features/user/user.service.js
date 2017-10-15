@@ -14,19 +14,20 @@ function UserService($firebaseObject, $firebaseArray) {
     };
 
     this.fetch = function(id) {
-        var ref_event = ref_events.child(id);
-        return $firebaseObject(ref_event).$loaded();
+        var ref_user = ref_users.child(id);
+        return $firebaseObject(ref_user).$loaded();
     };
 
-    this.add = function(event) {
-        ref_users.push(event);
+    this.add = function(user) {
+        ref_users.push(user);
     };
 
-    this.save = function(event) {
-        return event.$save();
+    this.save = function(user) {
+        return user.$save();
     };
 
-    this.remove = function(event) {
-        return event.$remove();
+    this.remove = function(user) {
+        console.log(user);
+        return ref_users.child(user.$id).remove();
     };
 }

@@ -5,34 +5,11 @@ angular
     .module('schedule.features')
     .controller('FeaturesController', FeaturesController);
 
-function FeaturesController(FeaturesService, $rootScope, $state) {
+function FeaturesController(FeaturesService, AuthService, $rootScope, $state) {
     var ctrl = this;
 
-    ctrl.isEditorChanged = function () {
-        return FeaturesService.isChanged();
-    };
-
-    ctrl.generatePPC = function (courseData) {
-        var docDefinition = generateData(courseData);
-
-        // const pdfDocGenerator = pdfMake.createPdf(docDefinition);
-
-        pdfMake.fonts = {
-            'Calibri' : {
-                normal: 'Calibri.ttf',
-                bold: 'Calibri-Bold.ttf',
-                italics: 'Calibri-Italic.ttf'
-            },
-            'Roboto': {
-                normal: 'Roboto-Regular.ttf',
-                bold: 'Roboto-Medium.ttf',
-                italics: 'Roboto-Italic.ttf',
-                bolditalics: 'Roboto-Italic.ttf'
-            }
-        };
-
-        // open the PDF in a new window
-        pdfMake.createPdf(docDefinition).open();
+    ctrl.logout = function () {
+        AuthService.logout();
     };
 
     // ctrl.$onInit = function() {

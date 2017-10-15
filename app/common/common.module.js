@@ -17,10 +17,10 @@ function commonConfig($stateProvider, $urlRouterProvider,
 
     $stateProvider.state(state);
 
-    // $urlRouterProvider
-    //     .when('', '/login')
-    //     .when('/', '/login')
-    //     .otherwise('/404');
+    $urlRouterProvider
+        .when('', '/login')
+        .when('/', '/login')
+        .otherwise('/404');
 
     $uiViewScrollProvider.useAnchorScroll();
 

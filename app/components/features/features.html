@@ -2,8 +2,14 @@
     <div class="md-toolbar-tools">
         <div class="md-title">
             <md-icon>date_range</md-icon>
-            Schedule
         </div>
+
+        <h2 flex md-truncate>Schedule</h2>
+
+        <md-button class="md-icon-button" aria-label="Logout" ng-click="$ctrl.logout()">
+            <md-icon>power_settings_new</md-icon>
+        </md-button>
+
     </div>
 </md-toolbar>
 
@@ -14,5 +20,12 @@
 <!-- MAIN CONTENT -->
 <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
 <div flex layout="row" style="position: relative;">
+
+    <sidebar
+            layout="column"
+            toggle-sidebar="$ctrl.toggleSidebar"
+            features="$ctrl.features"
+            course-data="$ctrl.courseData"></sidebar>
+
     <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="$ctrl.toggleSidebar ? '' : 'content-site'"></md-content>
 </div>
