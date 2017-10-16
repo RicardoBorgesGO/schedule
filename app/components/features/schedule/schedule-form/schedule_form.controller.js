@@ -62,7 +62,7 @@ function ScheduleFormController($scope, $state, ScheduleService, AuthService, To
 
             ScheduleService.add(ctrl.schedule);
 
-            ToastService.simple('Horário reservado com sucesso!');
+            ToastService.success('custom', 'Horário reservado com sucesso!');
             ctrl.back();
         });
     };

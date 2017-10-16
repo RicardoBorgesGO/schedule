@@ -5,7 +5,7 @@ angular
     .module('schedule.auth')
     .controller('LoginController', LoginController);
 
-function LoginController(AuthService, $state) {
+function LoginController(AuthService, $state, ToastService) {
     var ctrl = this;
     ctrl.error = false;
 
@@ -21,6 +21,7 @@ function LoginController(AuthService, $state) {
                     }
                 });
             }).catch(function(error) {
+                ToastService.success('custom', 'Usuário ou senha inválido.');
                 console.error("Authentication failed:", error);
                 ctrl.error = true;
             });
