@@ -1,7 +1,11 @@
 <md-content layout-gt-sm="row" layout-padding>
-    <div flex-xs flex-gt-xs="30" layout="column" class="content-login">
+    <div flex-xs flex-gt-xs="35" layout="column" class="content-login">
         <form name="loginForm" ng-submit="loginForm.$valid && $ctrl.login()">
             <md-card>
+                <div style="text-align: center;">
+                    <md-icon style="font-size: 64px; width: 64px; height: 64px; color: #145F70; padding: 24px;">date_range</md-icon>
+                </div>
+
                 <md-card-content>
                     <md-input-container class="md-block">
                         <label>Email</label>
@@ -14,8 +18,8 @@
                     </md-input-container>
                 </md-card-content>
 
-                <md-card-actions layout-align="center">
-                    <md-button type="submit" class="md-raised md-primary">
+                <md-card-actions layout="row" layout-align="center">
+                    <md-button style="width: 200px; font-weight: 800;" type="submit" class="md-raised md-primary">
                         Entrar
                     </md-button>
                 </md-card-actions>
@@ -24,3 +28,4 @@
     </div>
 </md-content>
 
+<link href="app/css/login.css" rel="stylesheet" type="text/css" />

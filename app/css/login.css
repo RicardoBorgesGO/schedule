@@ -1,0 +1,49 @@
+html {
+    background: #00E87C;
+}
+
+body {
+    background: #00E87C;
+}
+
+md-content.md-default-theme, md-content {
+    background-color: inherit;
+}
+
+.content-login {
+    margin: 0 auto;
+}
+
+.content-login md-card {
+    margin-top: 8em;
+}
+
+.content-login form {
+    padding: 2em;
+}
+
+.content-login .image-login {
+    width: 108px;
+    margin: 1em auto;
+}
+
+.content-login .login-buttons {
+    margin-top: -20px;
+}
+
+.content-login .login-buttons a:hover {
+    background: none;
+}
+
+.content-login .login-buttons .md-button {
+    margin: 0;
+}
+
+.content-login md-card md-card-content {
+     display: block;
+     padding: 6px 32px;
+}
+
+.content-login md-card md-card-actions {
+    padding: 24px;
+}
