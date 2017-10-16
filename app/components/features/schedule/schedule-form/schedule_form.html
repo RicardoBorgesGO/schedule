@@ -15,13 +15,13 @@
                     <md-calendar md-min-date="$ctrl.data" ng-model="$ctrl.data"
                                  md-date-filter="$ctrl.dateValid" ng-change="$ctrl.onSelect()"></md-calendar>
                     <div style="width: 250px; margin-left: 250px;">
-                        <md-button ng-disabled="!hour.active || $ctrl.schedule.hour == hour.hour" class="md-raised {{$ctrl.schedule.hour == hour.hour ? 'button-selected' : ''}}" ng-repeat="hour in $ctrl.hours" ng-click="$ctrl.onSelecthour(hour.hour)">
+                        <md-button ng-disabled="!hour.active || $ctrl.schedule.hour == hour.hour " class="md-raised {{$ctrl.schedule.hour == hour.hour ? 'button-selected' : ''}}" ng-repeat="hour in $ctrl.hours" ng-click="$ctrl.onSelecthour(hour.hour)">
                             {{hour.hour}}
                         </md-button>
                     </div>
                 </div>
 
-                <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid || $ctrl.isResolved($ctrl.scheduleData.$id)">
+                <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid || $ctrl.isResolved($ctrl.scheduleData.$id) || !$ctrl.schedule.hour">
                     <md-icon ng-bind="'check'"></md-icon> Reservar
                 </md-button>
 

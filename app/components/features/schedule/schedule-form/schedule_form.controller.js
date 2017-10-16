@@ -27,6 +27,7 @@ function ScheduleFormController($scope, $state, ScheduleService, AuthService, To
 
     ctrl.onSelect = function () {
         loadHours();
+        ctrl.schedule.hour = undefined;
     };
 
     function loadHours() {
