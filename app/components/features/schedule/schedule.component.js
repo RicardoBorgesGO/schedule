@@ -11,7 +11,8 @@ function ScheduleListComponent() {
         templateUrl: 'app/components/features/schedule/schedule.html',
         controller: 'ScheduleListController',
         bindings: {
-            schedules: '<'
+            schedules: '<',
+            schedulesUser: '<'
         }
     };
 }
@@ -23,7 +24,12 @@ function ScheduleListConfig($stateProvider) {
             url: '/list',
             component: 'scheduleList',
             resolve: {
-                schedules: function(EventService) {
+                schedulesUser: function (ScheduleService, AuthService) {
+                    return AuthService.getUserData().then(function (res) {
+                        return ScheduleService.fetchSchedulesByUser(Object.keys(res)[0]);
+                    });
+                },
+                schedules: function(EventService, schedulesUser) {
                     return EventService.fetchAll();
                 }
             },

@@ -13,8 +13,7 @@ function ScheduleFormController($scope, ScheduleService, AuthService) {
     ctrl.$onInit = function () {
         ctrl.schedule = {};
         ctrl.data = new Date(ctrl.scheduleData.dataInicial);
-
-        // console.log(ctrl.schedulesEvents);
+        
         hoursAdded();
 
         loadHours();
@@ -23,7 +22,6 @@ function ScheduleFormController($scope, ScheduleService, AuthService) {
     function hoursAdded() {
         angular.forEach(ctrl.schedulesEvents, function (schedule) {
             hours.push(schedule.hour);
-            // console.log(schedule);
         });
     }
 
@@ -43,10 +41,6 @@ function ScheduleFormController($scope, ScheduleService, AuthService) {
                     var result = _.some(hours, function (hour) {
                         return hour === dateStr;
                     });
-
-                    // hours.forEach(function (data) {
-                    console.log(result, dateStr);
-                    // });
                     ctrl.hours.push({hour: dateStr, active: !result});
 
                     dateThis = moment(dateThis).add(ctrl.scheduleData.intervalo, 'm');
@@ -71,6 +65,6 @@ function ScheduleFormController($scope, ScheduleService, AuthService) {
     };
 
     ctrl.dateValid = function ($date) {
-        return $date.getTime() >= ctrl.scheduleData.dataInicial && $date.getTime() <= ctrl.scheduleData.dataFinal;
+        return $date.getTime() >= ctrl.scheduleData.dataInicial && $date.getTime() <= moment(ctrl.scheduleData.dataFinal).add(1, 'days').valueOf();
     };
 }

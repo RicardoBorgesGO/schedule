@@ -14,6 +14,7 @@ function EventFormController($scope, $state, EventService, ToastService) {
 
     ctrl.$onInit = function () {
         ctrl.isNew = (ctrl.event === undefined);
+        ctrl.intervalDate = {};
 
         if (!ctrl.event) {
             ctrl.event = {};
@@ -23,9 +24,9 @@ function EventFormController($scope, $state, EventService, ToastService) {
         } else {
             ctrl.dataInicial = new Date(ctrl.event.dataInicial);
             ctrl.dataFinal = new Date(ctrl.event.dataFinal);
+            loadInterval();
         }
 
-        ctrl.intervalDate = {};
         // ctrl.intervalDate.intervalo = 0;
     };
 
@@ -40,29 +41,39 @@ function EventFormController($scope, $state, EventService, ToastService) {
 
     $scope.$watch('[$ctrl.dataFinal, $ctrl.dataInicial]', function() {
         if (ctrl.dataInicial) {
-            var a = moment(ctrl.dataFinal);
-            var b = moment(ctrl.dataInicial);
-            interval = a.diff(b, 'days');
-
-            if (interval > 0)
-                interval = interval+1;
-
-            var dia = ctrl.dataInicial.getDate();
-            var days = [];
-            for (var i = 0; i < interval; i++) {
-                days.push(dia + i);
-            }
-
-            //ctrl.intervalDate.intervalo = interval;
-            ctrl.intervalDate.days = days;
+            loadInterval();
         }
     });
+
+    function loadInterval() {
+        console.log(ctrl.dataFinal.setHours(0, 0, 0,0));
+        console.log(ctrl.dataFinal);
+        console.log(ctrl.dataInicial.setHours(0, 0, 0,0));
+        console.log(ctrl.dataInicial);
+
+        var a = moment(ctrl.dataFinal);
+        var b = moment(ctrl.dataInicial);
+        interval = a.diff(b, 'days');
+
+        if (interval > 0)
+            interval = interval+1;
+
+        var dia = ctrl.dataInicial.getDate();
+        var days = [];
+        for (var i = 0; i < interval; i++) {
+            days.push(dia + i);
+        }
+
+        //ctrl.intervalDate.intervalo = interval;
+        ctrl.intervalDate.days = days;
+    }
 
     ctrl.getNumber = function(num) {
         return new Array(num);
     }
 
     ctrl.save = function () {
+
         ctrl.event.dataInicial = ctrl.dataInicial.getTime();
         ctrl.event.dataFinal = ctrl.dataFinal.getTime();
         ctrl.event.times = [];

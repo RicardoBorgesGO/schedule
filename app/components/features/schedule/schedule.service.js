@@ -36,4 +36,10 @@ function ScheduleService($firebaseObject, $firebaseArray, $http, $q) {
             return res.val();
         });
     };
+
+    this.fetchSchedulesByUser = function(userId) {
+        return ref_events.orderByChild('user').equalTo(userId).once('value').then(function (res) {
+            return res.val();
+        });
+    };
 }
