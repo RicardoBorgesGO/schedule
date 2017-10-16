@@ -5,7 +5,7 @@ angular
     .module('schedule.events')
     .controller('EventListController', EventListController);
 
-function EventListController($state, DialogService, EventService, ToastService) {
+function EventListController($state, $mdToast, DialogService, EventService, ToastService) {
     var ctrl = this;
 
     ctrl.remove = function (event) {

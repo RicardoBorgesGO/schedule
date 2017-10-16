@@ -52,7 +52,7 @@ gulp.task('vendor', function() {
         'bower_components/angular-material/angular-material.js',
         'bower_components/angular-material-data-table/dist/md-data-table.min.js',
         'bower_components/ng-lodash/build/ng-lodash.min.js',
-        // 'bower_components/angular-sanitize/angular-sanitize.min.js',
+        'bower_components/angular-sanitize/angular-sanitize.min.js',
         'bower_components/ng-csv/build/ng-csv.min.js',
         'bower_components/firebase/firebase.js',
         'bower_components/angularfire/dist/angularfire.min.js',

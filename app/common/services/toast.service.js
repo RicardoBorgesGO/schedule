@@ -19,13 +19,14 @@ function ToastService($mdToast) {
         var messages = {
             'added': 'Adicionado',
             'updated': 'Atualizado',
-            'removed': 'Removido',
+            'removed': 'Removido'
         };
 
+        console.log(type);
         $mdToast.show({
             position  : 'top right',
             hideDelay : 3000,
-            template : '<md-toast class="toast--'+ type + '">' +
+            template : '<md-toast style="z-index: 100000;" class="toast--'+ type + '">' +
             '<span class="md-toast-text" flex>' + messages[type] + ' com sucesso</span>' +
             '</md-toast>'
         });
