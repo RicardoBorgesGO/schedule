@@ -48,16 +48,14 @@
                                 <input ng-model="$ctrl.timeFinal['data' + $index]" type="time">
                             </md-input-container>
                         </div>
-
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>Intevalo</label>
-                            <input required ng-model="$ctrl.event.intervalo" placeholder="Intervalo de tempo em minutos. Ex.: 45" type="number">
-                        </md-input-container>
                     </div>
                 </div>
 
                 <div layout-gt-xs="row">
-
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Intevalo</label>
+                        <input required ng-model="$ctrl.event.intervalo" placeholder="Intervalo de tempo em minutos. Ex.: 45" type="number">
+                    </md-input-container>
                 </div>
 
                 <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid">

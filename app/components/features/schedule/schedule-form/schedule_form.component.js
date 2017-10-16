@@ -36,6 +36,11 @@ function ScheduleFormConfig($stateProvider) {
             },
             schedulesEvents: function ($transition$, ScheduleService) {
                 return ScheduleService.fetchSchedulesByEvent($transition$.params().id);
+            },
+            schedulesUser: function (ScheduleService, AuthService) {
+                return AuthService.getUserData().then(function (res) {
+                    return ScheduleService.fetchSchedulesByUser(Object.keys(res)[0]);
+                });
             }
         },
         ncyBreadcrumb: {

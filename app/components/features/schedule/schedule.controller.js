@@ -14,7 +14,6 @@ function ScheduleListController($state) {
         });
 
         return result;
-        // console.log(eventId, result);
     };
 
     ctrl.go = function(id) {

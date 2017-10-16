@@ -5,7 +5,7 @@ angular
     .module('schedule.schedule')
     .controller('ScheduleFormController', ScheduleFormController);
 
-function ScheduleFormController($scope, ScheduleService, AuthService) {
+function ScheduleFormController($scope, $state, ScheduleService, AuthService, ToastService) {
     var ctrl = this;
     ctrl.hours = [];
     var hours = [];
@@ -61,10 +61,25 @@ function ScheduleFormController($scope, ScheduleService, AuthService) {
             ctrl.schedule.user = Object.keys(res)[0];
 
             ScheduleService.add(ctrl.schedule);
+
+            ToastService.simple('Horário reservado com sucesso!');
+            ctrl.back();
         });
     };
 
+    ctrl.back = function () {
+        $state.go('schedule.list');
+    }
+
     ctrl.dateValid = function ($date) {
         return $date.getTime() >= ctrl.scheduleData.dataInicial && $date.getTime() <= moment(ctrl.scheduleData.dataFinal).add(1, 'days').valueOf();
+    };
+
+    ctrl.isResolved = function (eventId) {
+        var result = _.some(ctrl.schedulesUser, function (su) {
+            return su.event === eventId;
+        });
+
+        return result;
     };
 }

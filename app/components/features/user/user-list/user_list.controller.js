@@ -16,9 +16,7 @@ function UserListController($state, DialogService, UserService, ToastService, Au
         DialogService.confirmRemove()
             .then(function() {
                 AuthService.removeUser(user);
-                // .then(function (response) {
-                //     ToastService.success('removed');
-                // });
+                ToastService.success('removed');
             });
     };
 
