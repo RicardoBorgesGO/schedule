@@ -35,11 +35,11 @@
                         {{user.password}}
                     </td>
                     <td md-cell>
-                        <md-button class="md-icon-button" aria-label="Editar evento" ng-click="$ctrl.go(user.$id)">
+                        <md-button class="md-icon-button" aria-label="Editar evento" ng-click="$ctrl.go(user.$id)" >
                             <md-icon>mode_edit</md-icon>
                         </md-button>
 
-                        <md-button class="md-icon-button" aria-label="Remover evento" ng-click="$ctrl.remove(user)">
+                        <md-button class="md-icon-button" aria-label="Remover evento" ng-click="$ctrl.remove(user)" ng-disabled="user.isAdmin">
                             <md-icon>delete</md-icon>
                         </md-button>
                     </td>

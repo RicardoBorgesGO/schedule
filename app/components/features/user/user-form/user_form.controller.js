@@ -39,8 +39,6 @@ function UserFormController($state, UserService, AuthService, ToastService) {
     }
 
     ctrl.save = function () {
-        ctrl.userData.isAdmin = false;
-
         ctrl.userData.events = _.chain(ctrl.events)
             .filter(function(event){
                 return event.selected;
@@ -51,6 +49,8 @@ function UserFormController($state, UserService, AuthService, ToastService) {
             .value();
 
         if (ctrl.isNew) {
+            ctrl.userData.isAdmin = false;
+
             var password = makePassword();
             ctrl.userData.password = password;
             AuthService.createUser(ctrl.userData);
