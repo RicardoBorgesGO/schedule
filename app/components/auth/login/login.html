@@ -1,21 +1,26 @@
-
-    <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+<md-content layout-gt-sm="row" layout-padding>
+    <div flex-xs flex-gt-xs="30" layout="column" class="content-login">
         <form name="loginForm" ng-submit="loginForm.$valid && $ctrl.login()">
-            <div>
-                <md-input-container>
-                    <label>Login</label>
-                    <input type="text" ng-model="$ctrl.email">
-                </md-input-container>
+            <md-card>
+                <md-card-content>
+                    <md-input-container class="md-block">
+                        <label>Email</label>
+                        <input type="text" ng-model="$ctrl.email">
+                    </md-input-container>
 
-                <md-input-container>
-                    <label>Senha</label>
-                    <input ng-model="$ctrl.password" type="password">
-                </md-input-container>
-            </div>
+                    <md-input-container class="md-block">
+                        <label>Senha</label>
+                        <input ng-model="$ctrl.password" type="password">
+                    </md-input-container>
+                </md-card-content>
 
-            <md-button type="submit" class="md-raised md-primary">
-                Entrar
-            </md-button>
+                <md-card-actions layout-align="center">
+                    <md-button type="submit" class="md-raised md-primary">
+                        Entrar
+                    </md-button>
+                </md-card-actions>
+            </md-card>
         </form>
-    </md-content>
+    </div>
+</md-content>
 

@@ -49,6 +49,35 @@ md-sidenav {
     padding-left: 250px;
 }
 
+.content-login {
+    margin: 0 auto;
+}
+
+.content-login md-card {
+    margin-top: 8em;
+}
+
+.content-login form {
+    padding: 2em;
+}
+
+.content-login .image-login {
+    width: 108px;
+    margin: 1em auto;
+}
+
+.content-login .login-buttons {
+    margin-top: -20px;
+}
+
+.content-login .login-buttons a:hover {
+    background: none;
+}
+
+.content-login .login-buttons .md-button {
+    margin: 0;
+}
+
 .content-list {
     width: 80%;
     margin: 0 auto;
