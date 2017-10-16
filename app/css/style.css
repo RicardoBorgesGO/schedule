@@ -120,3 +120,18 @@ md-sidenav {
 .button-selected {
     background: #00E87C !important;
 }
+
+md-sidenav {
+    width: 250px;
+    margin-top: 65px;
+    position: fixed !important;
+}
+
+.content-from-toolbar {
+    padding-top: 70px;
+}
+
+.toolbar-fixed {
+    position: fixed !important;
+    z-index: 10000;
+}

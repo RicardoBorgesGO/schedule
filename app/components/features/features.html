@@ -1,4 +1,4 @@
-<md-toolbar class="md-whiteframe-1dp">
+<md-toolbar class="md-whiteframe-1dp toolbar-fixed">
     <div class="md-toolbar-tools">
         <div class="md-title">
             <md-icon>date_range</md-icon>
@@ -19,11 +19,11 @@
 
 <!-- MAIN CONTENT -->
 <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
-<div flex layout="row" style="position: relative;">
+<div flex layout="row">
     <sidebar
             ng-if="isAdmin"
             layout="column"
             features="features"></sidebar>
 
-    <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="isAdmin ? 'content-site' : ''"></md-content>
+    <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="isAdmin ? 'content-site content-from-toolbar' : 'content-from-toolbar' "></md-content>
 </div>
