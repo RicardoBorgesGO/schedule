@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid || !$ctrl.isResolved($ctrl.scheduleData.$id)">
+                <md-button type="submit" class="md-raised md-primary" ng-disabled="queryUserForm.$invalid || $ctrl.isResolved($ctrl.scheduleData.$id)">
                     <md-icon ng-bind="'check'"></md-icon> Reservar
                 </md-button>
 

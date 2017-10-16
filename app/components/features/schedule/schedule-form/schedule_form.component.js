@@ -12,7 +12,8 @@ function ScheduleFormComponent() {
         controller: 'ScheduleFormController',
         bindings: {
             scheduleData: '<',
-            schedulesEvents: '<'
+            schedulesEvents: '<',
+            schedulesUser: '<'
         }
     };
 }
