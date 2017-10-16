@@ -116,3 +116,7 @@ md-sidenav {
 .custom-sidebar, .custom-sidebar md-icon {
     color: #000000;
 }
+
+.button-selected {
+    background: #00E87C !important;
+}

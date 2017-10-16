@@ -11,7 +11,8 @@ function ScheduleFormComponent() {
         templateUrl: 'app/components/features/schedule/schedule-form/schedule_form.html',
         controller: 'ScheduleFormController',
         bindings: {
-            scheduleData: '<'
+            scheduleData: '<',
+            schedulesEvents: '<'
         }
     };
 }
@@ -32,6 +33,9 @@ function ScheduleFormConfig($stateProvider) {
         resolve: {
             scheduleData: function($transition$, EventService) {
                 return EventService.fetch($transition$.params().id);
+            },
+            schedulesEvents: function ($transition$, ScheduleService) {
+                return ScheduleService.fetchSchedulesByEvent($transition$.params().id);
             }
         },
         ncyBreadcrumb: {

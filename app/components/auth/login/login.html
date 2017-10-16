@@ -9,17 +9,17 @@
                 <md-card-content>
                     <md-input-container class="md-block">
                         <label>Email</label>
-                        <input type="text" ng-model="$ctrl.email">
+                        <input type="email" ng-model="$ctrl.email" required>
                     </md-input-container>
 
                     <md-input-container class="md-block">
                         <label>Senha</label>
-                        <input ng-model="$ctrl.password" type="password">
+                        <input ng-model="$ctrl.password" type="password" required>
                     </md-input-container>
                 </md-card-content>
 
                 <md-card-actions layout="row" layout-align="center">
-                    <md-button style="width: 200px; font-weight: 800;" type="submit" class="md-raised md-primary">
+                    <md-button style="width: 200px; font-weight: 800;" type="submit" class="md-raised md-primary" ng-disabled="loginForm    .$invalid">
                         Entrar
                     </md-button>
                 </md-card-actions>

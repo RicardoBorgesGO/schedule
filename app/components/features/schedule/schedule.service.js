@@ -30,4 +30,10 @@ function ScheduleService($firebaseObject, $firebaseArray, $http, $q) {
     this.remove = function(event) {
         return event.$remove();
     };
+
+    this.fetchSchedulesByEvent = function(eventId) {
+        return ref_events.orderByChild('event').equalTo(eventId).once('value').then(function (res) {
+            return res.val();
+        });
+    };
 }

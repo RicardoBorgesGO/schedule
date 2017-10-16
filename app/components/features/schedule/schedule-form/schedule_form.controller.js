@@ -5,16 +5,27 @@ angular
     .module('schedule.schedule')
     .controller('ScheduleFormController', ScheduleFormController);
 
-function ScheduleFormController($scope, ScheduleService) {
+function ScheduleFormController($scope, ScheduleService, AuthService) {
     var ctrl = this;
     ctrl.hours = [];
+    var hours = [];
 
     ctrl.$onInit = function () {
         ctrl.schedule = {};
         ctrl.data = new Date(ctrl.scheduleData.dataInicial);
 
+        // console.log(ctrl.schedulesEvents);
+        hoursAdded();
+
         loadHours();
     };
+
+    function hoursAdded() {
+        angular.forEach(ctrl.schedulesEvents, function (schedule) {
+            hours.push(schedule.hour);
+            // console.log(schedule);
+        });
+    }
 
     ctrl.onSelect = function () {
         loadHours();
@@ -28,7 +39,15 @@ function ScheduleFormController($scope, ScheduleService) {
                 var dateFinalThis = new moment(data.timeFinal);
                 while (!dateThis.isAfter(dateFinalThis)) {
                     var dateStr = dateThis.get('hour') + ':' + (dateThis.get('minute') < 10 ? '0' + dateThis.get('minute'):dateThis.get('minute'));
-                    ctrl.hours.push(dateStr);
+
+                    var result = _.some(hours, function (hour) {
+                        return hour === dateStr;
+                    });
+
+                    // hours.forEach(function (data) {
+                    console.log(result, dateStr);
+                    // });
+                    ctrl.hours.push({hour: dateStr, active: !result});
 
                     dateThis = moment(dateThis).add(ctrl.scheduleData.intervalo, 'm');
                 }
@@ -42,9 +61,13 @@ function ScheduleFormController($scope, ScheduleService) {
     };
 
     ctrl.save = function () {
-        ctrl.schedule.data = ctrl.data.getTime();
+        AuthService.getUserData().then(function (res) {
+            ctrl.schedule.data = ctrl.data.getTime();
+            ctrl.schedule.event = ctrl.scheduleData.$id;
+            ctrl.schedule.user = Object.keys(res)[0];
 
-        ScheduleService.add(ctrl.schedule);
+            ScheduleService.add(ctrl.schedule);
+        });
     };
 
     ctrl.dateValid = function ($date) {

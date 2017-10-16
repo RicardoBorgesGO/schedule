@@ -8,13 +8,13 @@ angular
     .module('schedule.events')
     .controller('EventFormController', EventFormController);
 
-function EventFormController($mdDialog, $scope, EventService) {
+function EventFormController($scope, $state, EventService, ToastService) {
     var ctrl = this;
     var interval = 0;
 
     ctrl.$onInit = function () {
+        ctrl.isNew = (ctrl.event === undefined);
 
-        console.log(ctrl.event);
         if (!ctrl.event) {
             ctrl.event = {};
             if (!ctrl.event.usuarios){
@@ -77,45 +77,20 @@ function EventFormController($mdDialog, $scope, EventService) {
             ctrl.event.times.push(time);
         }
 
-        EventService.add(angular.copy(ctrl.event));
-    };
 
-    ctrl.showAddUsuarioDialog = function(usuario) {
-        $mdDialog.show({
-            controller: DialogAddUsuarioController,
-            templateUrl: 'app/components/features/event/event-form/dialog.add.usuario.html',
-            locals: {usuario: usuario},
-            parent: angular.element(document.body),
-            clickOutsideToClose: true
-        });
-    };
-
-
-
-    //TODO fazer função para verificar se o login é igual a outro ja existente
-
-
-    function DialogAddUsuarioController($scope, $mdDialog, usuario) {
-        if (!usuario) {
-            $scope.usuario = {};
-            $scope.usuario.login = Math.floor((Math.random() * 10000000) + 1);
-            $scope.usuario.password = makePassword();
-            $scope.usuario.id = ctrl.event.usuarios.length + 1;
+        if (ctrl.isNew) {
+            EventService.add(angular.copy(ctrl.event));
+            ToastService.success('added');
+        } else {
+            console.log(ctrl.event);
+            EventService.save(ctrl.event);
+            ToastService.success('updated');
         }
 
-        $scope.hide = function() {
-            $mdDialog.hide();
-        };
+        ctrl.back();
+    };
 
-        $scope.cancel = function() {
-            $mdDialog.cancel();
-        };
-
-        $scope.add = function () {
-            ctrl.event.usuarios.push($scope.usuario);
-
-            delete $scope.servico;
-            $scope.hide();
-        };
+    ctrl.back = function () {
+        $state.go('event.list');
     };
 }
