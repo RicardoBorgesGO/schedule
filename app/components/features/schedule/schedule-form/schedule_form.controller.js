@@ -21,7 +21,7 @@ function ScheduleFormController($scope, $state, ScheduleService, AuthService, To
 
     function hoursAdded() {
         angular.forEach(ctrl.schedulesEvents, function (schedule) {
-            hours.push(schedule.hour);
+            hours.push(schedule);
         });
     }
 
@@ -39,7 +39,7 @@ function ScheduleFormController($scope, $state, ScheduleService, AuthService, To
                     var dateStr = dateThis.get('hour') + ':' + (dateThis.get('minute') < 10 ? '0' + dateThis.get('minute'):dateThis.get('minute'));
 
                     var result = _.some(hours, function (hour) {
-                        return hour === dateStr;
+                        return hour.hour === dateStr && new Date(hour.data).getDate() == ctrl.data.getDate();
                     });
                     ctrl.hours.push({hour: dateStr, active: !result});
 
