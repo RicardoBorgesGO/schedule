@@ -41,6 +41,8 @@ gulp.task('serve', ['vendor', 'bundle'],function() {
 gulp.task('vendor', function() {
     gulp.src([
         'bower_components/moment/moment.js',
+        'bower_components/moment-timezone/builds/moment-timezone.min.js',
+        'bower_components/moment-timezone/builds/moment-timezone-with-data.js',
         'bower_components/pdfmake/build/pdfmake.min.js',
         'bower_components/pdfmake/build/vfs_fonts.js',
         'bower_components/pdfmake/build/pdfmake.min.js',

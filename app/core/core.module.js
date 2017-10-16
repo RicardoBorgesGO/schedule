@@ -23,6 +23,10 @@ function CoreConfig($urlRouterProvider, $mdThemingProvider) {
     // $urlRouterProvider.otherwise('/404');
 
     firebase.initializeApp(config);
+
+    moment.tz.setDefault("America/Sao_Paulo");
+    console.log(moment.tz.guess());
+    // moment().tz("America/Sao_Paulo").format();
 }
 
 function CoreRun($transitions, $state, AuthService, UserService) {
