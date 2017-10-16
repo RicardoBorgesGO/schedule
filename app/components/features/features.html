@@ -25,5 +25,11 @@
             layout="column"
             features="features"></sidebar>
 
-    <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="isAdmin ? 'content-site content-from-toolbar' : 'content-from-toolbar' "></md-content>
+    <md-content role="main" flex layout="column" md-scroll-y ui-view autoscroll ng-class="isAdmin ? 'content-site content-from-toolbar' : 'content-from-toolbar' ">
+        <div class="content" layout="column">
+            <md-card class="card-padding md-whiteframe-4dp">
+                <div calendar="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources"></div>
+            </md-card>
+        </div>
+    </md-content>
 </div>

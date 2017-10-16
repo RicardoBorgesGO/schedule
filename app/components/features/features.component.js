@@ -13,7 +13,8 @@ function featuresComponent() {
         bindings: {
             user: '<',
             features: '<',
-            isAdmin: '<'
+            isAdmin: '<',
+            schedules: '<'
         }
     }
 }
@@ -40,6 +41,9 @@ function featuresConfig($stateProvider) {
                 }
 
                 return FeaturesService.loadSidenav(services);
+            },
+            schedules: function (ScheduleService, UserService, EventService) {
+                return ScheduleService.fetchAll();
             }
         }
     };

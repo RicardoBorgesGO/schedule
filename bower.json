@@ -27,7 +27,8 @@
     "pdfmake": "^0.1.27",
     "moment": "^2.18.1",
     "angularfire": "^2.3.0",
-    "md-date-range-picker": "^0.6.3"
+    "md-date-range-picker": "^0.6.3",
+    "angular-ui-calendar": "^1.0.2"
   },
   "resolutions": {
     "angular": "1.6.3"

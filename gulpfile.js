@@ -56,7 +56,10 @@ gulp.task('vendor', function() {
         'bower_components/ng-csv/build/ng-csv.min.js',
         'bower_components/firebase/firebase.js',
         'bower_components/angularfire/dist/angularfire.min.js',
-        'bower_components/md-date-range-picker/dist/md-date-range-picker.js'
+        'bower_components/md-date-range-picker/dist/md-date-range-picker.js',
+        'bower_components/angular-ui-calendar/src/calendar.js',
+        'bower_components/fullcalendar/dist/fullcalendar.min.js',
+        'bower_components/fullcalendar/dist/gcal.js'
     ])
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest('./public/js/'));
